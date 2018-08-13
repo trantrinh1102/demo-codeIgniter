@@ -32,7 +32,7 @@ services:
     ports:
       - 18306:3306
     environment:
-      - MYSQL_DATABASE=demo
+      - MYSQL_DATABASE=demo_db
       - MYSQL_USER=dbuser
       - MYSQL_PASSWORD=123
       - MYSQL_ROOT_PASSWORD=root
@@ -41,7 +41,7 @@ services:
     ports:
       - 18307:3306
     environment:
-      - MYSQL_DATABASE=demo_test
+      - MYSQL_DATABASE=demo_db_test
       - MYSQL_USER=dbuser
       - MYSQL_PASSWORD=123
       - MYSQL_ROOT_PASSWORD=root
