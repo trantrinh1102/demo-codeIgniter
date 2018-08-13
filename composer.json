@@ -11,10 +11,43 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.3.7"
+		"php": ">=7.1",
+		"vlucas/phpdotenv": "^2.4",
+		"phpoffice/phpexcel": "^1.8",
+		"robmorgan/phinx": "^0.7.1",
+		"monolog/monolog": "^1.22"
 	},
-	"suggest": {
-		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
+	"scripts": {
+		"lint": [
+			"phpcs --standard=ruleset.xml -p"
+		],
+		"lint-fix": [
+			"phpcbf --standard=ruleset.xml -p"
+		],
+		"test-no-lint": [
+			"phpunit -c ./application/tests --no-coverage"
+		],
+		"test-no-cover": [
+			"composer run lint",
+			"phpunit -c ./application/tests --no-coverage"
+		],
+		"test": [
+			"composer run lint-fix",
+			"composer run lint",
+			"phpunit -c ./application/tests"
+		],
+		"migrate": [
+			"php ./vendor/bin/phinx migrate"
+		],
+		"migration:create": [
+			"php ./vendor/bin/phinx create"
+		],
+		"migration:rollback": [
+			"php ./vendor/bin/phinx rollback"
+		],
+		"seed": [
+			"php ./vendor/bin/phinx seed:run"
+		]
 	},
 	"require-dev": {
 		"mikey179/vfsStream": "1.1.*",
